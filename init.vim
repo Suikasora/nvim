@@ -388,7 +388,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'wellle/tmux-complete.vim'
 
 "" Snippets
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 "Plug 'theniceboy/vim-snippets'
 
 "" Undo Tree
@@ -684,7 +684,7 @@ silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 "" === NERDTree file system
 "" ===
 let g:NERDCreateDefaultMappings = 0
-nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTreeFocus<CR>
 "noremap <C-n> :NERDTree<CR>
 "nnoremap <C-t> :NERDTreeToggle<CR>
 "nnoremap <C-f> :NERDTreeFind<CR>
@@ -1334,5 +1334,4 @@ set termencoding=utf-8
 set encoding=utf-8
 
 "=======================eclim
-set nocompatible
 filetype plugin indent on
