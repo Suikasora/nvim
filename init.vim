@@ -357,6 +357,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ajmwagar/vim-deus'
 ""Plug 'arzg/vim-colors-xcode'
 
+
 "" Genreal Highlighter
 "Plug 'jaxbot/semantic-highlight.vim'
 "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -707,6 +708,7 @@ let g:NERDTreeMapChangeRoot = "I" "change tree root to the selected dir
 let g:NERDTreeMapUpdir = "N" "move tree root up a dir
 "let g:NERDTreeMapToggleHidden = "<BS>"
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeMapQuit = "<C-n>" "<C-n> to open and close nerdtree
 
 
 
