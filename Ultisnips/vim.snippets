@@ -1,0 +1,18 @@
+global !p
+def func1(text):
+  return len(text)
+endglobal
+
+snippet arst "my arst description" 
+hi arst is the ${1:default text is here}
+${2|option1,option2,option3|}
+`echo $PATH` 
+abc`!v indent(".")`
+`!p snip.rv='defined text'`
+`!p snip.rv=func1("arst")`
+====
+$0
+====
+snippet end0
+====
+endsnippet

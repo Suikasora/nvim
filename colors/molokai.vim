@@ -140,7 +140,7 @@ hi TabLine         guibg=#1B1D1E guifg=#808080 gui=none
 
 hi Normal          guifg=#F8F8F2 guibg=#1B1D1E          ctermfg=252    ctermbg=234
 hi Comment         guifg=#7E8E91                        ctermfg=244
-hi CursorLine      guifg=#FFFFFF guibg=#293739          ctermfg=255    ctermbg=236   cterm=none
+"hi CursorLine      guifg=#FFFFFF guibg=#293739          ctermfg=255    ctermbg=236   cterm=none
 hi CursorLineNr    guifg=#FD971F               gui=none ctermfg=208    cterm=none
 hi CursorColumn                  guibg=#293739          ctermbg=236
 hi ColorColumn                   guibg=#232526          ctermbg=236
