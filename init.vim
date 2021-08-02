@@ -31,8 +31,8 @@ set relativenumber
 set cursorline
 set noexpandtab
 set tabstop=4
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4 "when press <tab> or > to adjust
+set softtabstop=-1
 set autoindent
 set list
 set listchars=tab:\|\ ,trail:▫
@@ -393,7 +393,7 @@ Plug 'SirVer/ultisnips'
 "Plug 'theniceboy/vim-snippets'
 
 "" Undo Tree
-"Plug 'mbbill/undotree'
+Plug 'mbbill/undotree'
 
 "" Git
 "Plug 'tpope/vim-fugitive'
@@ -410,14 +410,17 @@ Plug 'SirVer/ultisnips'
 "Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
 
 "" HTML, CSS, JavaScript, PHP, JSON, etc.
-"Plug 'elzr/vim-json'
+Plug 'elzr/vim-json'
 "Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
-"Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 ""Plug 'jaxbot/browserlink.vim'
+
+"Vue.js
+Plug 'posva/vim-vue' "For .vue Single File Components
 
 "" Go
 "Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
@@ -448,9 +451,10 @@ Plug 'SirVer/ultisnips'
 
 "" Editor Enhancement
 ""Plug 'Raimondi/delimitMate'
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 "Plug 'mg979/vim-visual-multi'
 Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
+Plug 'https://github.com/gregsexton/MatchTag.git'
 
 "Plug 'Suikasora/nerdcommenter' "only <space>ci for commenterInvert
 "Plug 'theniceboy/antovim' " gs to switch
@@ -791,19 +795,20 @@ let g:NERDCreateDefaultMappings = 1
 "" ===
 "" === Undotree
 "" ===
-"noremap L :UndotreeToggle<CR>
-"let g:undotree_DiffAutoOpen = 1
-"let g:undotree_SetFocusWhenToggle = 1
-"let g:undotree_ShortIndicators = 1
-"let g:undotree_WindowLayout = 2
+noremap L :UndotreeToggle<CR>
+let g:undotree_DiffAutoOpen = 1
+let g:undotree_SetFocusWhenToggle = 1
+"let g:undotree_ShortIndicators = 1 " e.g. using 'd' instead of 'days'
+let g:undotree_WindowLayout = 2
 "let g:undotree_DiffpanelHeight = 8
-"let g:undotree_SplitWidth = 24
-"function g:Undotree_CustomMap()
-	"nmap <buffer> u <plug>UndotreeNextState
-	"nmap <buffer> e <plug>UndotreePreviousState
-	"nmap <buffer> U 5<plug>UndotreeNextState
-	"nmap <buffer> E 5<plug>UndotreePreviousState
-"endfunc
+"let g:undotree_SplitWidth = 24 "if g:ShortIndicators then default 30 else default 24
+function g:Undotree_CustomMap()
+	nmap <buffer> u <plug>UndotreeNextState
+	nmap <buffer> e <plug>UndotreePreviousState
+	nmap <buffer> U 5<plug>UndotreeNextState
+	nmap <buffer> E 5<plug>UndotreePreviousState
+	nmap <buffer> Q :UndotreeToggle<CR>
+endfunc
 
 
 "" ==
@@ -1314,7 +1319,8 @@ inoremap jj <Esc>
 "let g:indentLine_char =			 '▏'
 "let g:indentLine_color_term = 239
 "" ____________________________________________________________binds______________
-"noremap ff $a;<Esc>
+noremap ff mf $a;<Esc> `f
+"inoremap <leader>; <C-o>A;
 ""hi Normal guibg=NONE ctermbg=NONE
 "inoremap <c-s> $$<left>
 "noremap 2o o<Esc>o
