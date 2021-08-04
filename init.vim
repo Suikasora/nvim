@@ -391,6 +391,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "" Snippets
 Plug 'SirVer/ultisnips'
 "Plug 'theniceboy/vim-snippets'
+Plug 'honza/vim-snippets'
 
 "" Undo Tree
 Plug 'mbbill/undotree'
@@ -503,7 +504,7 @@ Plug 'Chiel92/vim-autoformat'
 
 "" Other visual enhancement
 "Plug 'ryanoasis/vim-devicons'
-"Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 "Plug 'mg979/vim-xtabline'
 "Plug 'wincent/terminus'
 
@@ -552,9 +553,9 @@ set lazyredraw
 ""set background=light
 ""set cursorcolumn
 
-color molokai
-let g:molokai_original = 1
-let g:rehash256 = 1
+color gruvbox
+"let g:molokai_original = 1
+"let g:rehash256 = 1
 
 
 
@@ -1144,7 +1145,7 @@ let g:formatters_ejs = ['aih_js']
 "" ===
 "" === rainbow
 "" ===
-"let g:rainbow_active = 1
+let g:rainbow_active = 1
 
 
 "" ===
@@ -1298,12 +1299,15 @@ let g:Illuminate_delay = 750
 "endif
 
 ""_____________________________________________________________Aihui______________
+
 ""=============aihui: skeleton from the past
 ""inoremap <c-i> <Esc>la ====== <TAB>
 "change my <ESC> inoremap
 inoremap jj <Esc>
 ""=============
+
 ""_____________________________________________________________Plug_______________
+
 "" ===aih
 "" === IndentLine
 "" ===aih
@@ -1318,8 +1322,10 @@ inoremap jj <Esc>
 "let g:indentLine_char =		  '⎸'
 "let g:indentLine_char =			 '▏'
 "let g:indentLine_color_term = 239
+
 "" ____________________________________________________________binds______________
-noremap ff mf $a;<Esc> `f
+noremap ff $a;<Esc>
+noremap ,, $a,<Esc>
 "inoremap <leader>; <C-o>A;
 ""hi Normal guibg=NONE ctermbg=NONE
 "inoremap <c-s> $$<left>
@@ -1343,3 +1349,5 @@ set encoding=utf-8
 
 "=======================eclim
 filetype plugin indent on
+" ____________________________________________________________source
+source ~/.config/nvim/markdown-snippets.vim
