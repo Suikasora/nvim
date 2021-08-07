@@ -1,0 +1,14 @@
+global !p
+def outputENDSNIPPET():
+	return "endsnippet"
+endglobal
+
+
+snippet s "snippet" bA
+snippet ${1:trigger} "${2:description}" ${3:options}
+$0
+`!p snip.rv=outputENDSNIPPET()`
+endsnippet
+
+
+

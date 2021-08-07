@@ -1,0 +1,21 @@
+extends html
+
+#若boolean为true，则显示
+snippet if "vue-if"
+v-if="${1:boolean}"
+endsnippet
+
+snippet for "v-for"
+v-for="${1:var} in ${2:vars}"
+endsnippet
+
+snippet class "v-bind:class"
+v-bind:class="$0"
+endsnippet
+
+snippet btn "btn with v-on:click" b
+<button v-on:click="${1:function}">$0</button>
+endsnippet
+snippet btn "btn with @click" b
+<button @click="${1:function}">$0</button>
+endsnippet

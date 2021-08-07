@@ -361,15 +361,15 @@ Plug 'ajmwagar/vim-deus'
 "" Genreal Highlighter
 "Plug 'jaxbot/semantic-highlight.vim'
 "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'ap/vim-css-color'
 
 "" File navigation
 ""Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'preservim/nerdtree'
 ""Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'junegunn/fzf.vim'
-""Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 ""Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-""Plug 'junegunn/fzf'
 "Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
 "" Taglist
@@ -395,6 +395,10 @@ Plug 'honza/vim-snippets'
 
 "" Undo Tree
 Plug 'mbbill/undotree'
+
+" TODOLIST
+Plug 'nvim-lua/plenary.nvim'
+Plug 'folke/todo-comments.nvim'
 
 "" Git
 "Plug 'tpope/vim-fugitive'
@@ -457,6 +461,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
 Plug 'https://github.com/gregsexton/MatchTag.git'
 
+"Folding
+Plug 'Konfekt/FastFold'
+Plug 'zhimsel/vim-stay'
+
 "Plug 'Suikasora/nerdcommenter' "only <space>ci for commenterInvert
 "Plug 'theniceboy/antovim' " gs to switch
 "Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
@@ -465,7 +473,6 @@ Plug 'https://github.com/gregsexton/MatchTag.git'
 "Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 "Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 "Plug 'easymotion/vim-easymotion'
-"Plug 'Konfekt/FastFold'
 ""Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
 "Plug 'svermeulen/vim-subversive'
@@ -525,6 +532,7 @@ Plug 'luochen1990/rainbow'
 "Plug 'Yggdroot/indentLine'	"for beautiful tabcolumn (but bug with plug-nerdcommenter
 "Plug 'iamcco/coc-tailwindcss', {'do': 'yarn install --frozen-lockfile && yarn run build'}
 "Plug 'chrisbra/vim-diff-enhanced'
+
 call plug#end()
 
 " experimental
@@ -535,23 +543,23 @@ set lazyredraw
 "" ===
 "" === Dress up my vim
 "" ===
-"set termguicolors " enable true colors support
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-""set background=dark
-""let ayucolor="mirage"
-""let g:oceanic_next_terminal_bold = 1
-""let g:oceanic_next_terminal_italic = 1
-""let g:one_allow_italics = 1
+	"set termguicolors " enable true colors support
+	"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+	""set background=dark
+	""let ayucolor="mirage"
+	""let g:oceanic_next_terminal_bold = 1
+	""let g:oceanic_next_terminal_italic = 1
+	""let g:one_allow_italics = 1
 
-""color dracula
-""color one
-"color deus
-""color gruvbox
-""let ayucolor="light"
-""color ayu
-""color xcodelighthc
-""set background=light
-""set cursorcolumn
+	""color dracula
+	""color one
+	"color deus
+	""color gruvbox
+	""let ayucolor="light"
+	""color ayu
+	""color xcodelighthc
+	""set background=light
+	""set cursorcolumn
 
 color gruvbox
 "let g:molokai_original = 1
@@ -725,40 +733,25 @@ let g:NERDCreateDefaultMappings = 1
 "" ===
 "" === FZF
 "" ===
-"set rtp+=/usr/local/opt/fzf
-"set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
-"set rtp+=/home/david/.linuxbrew/opt/fzf
-"noremap <C-p> :Files<CR>
-"""noremap <C-f> :Rg<CR>
-"noremap <C-h> :History<CR>
-""noremap <C-t> :BTags<CR>
-"noremap <C-l> :Lines<CR>
-"noremap <C-w> :Buffers<CR>
-"noremap <leader>; :History:<CR>
+nmap <leader>fl :FzfPreviewBufferLines<CR>
+nmap <leader>ff :FzfPreviewProjectFiles<CR>
+nmap <leader>fg :FzfPreviewGitFiles<CR>
+nmap <leader>fc :FzfPreviewCommandPalette<CR>
 
-"let g:fzf_preview_window = 'right:60%'
-"let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-
-"function! s:list_buffers()
-	"redir => list
-	"silent ls
-	"redir END
-	"return split(list, "\n")
-"endfunction
-
-"function! s:delete_buffers(lines)
-	"execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
-"endfunction
-
-"command! BD call fzf#run(fzf#wrap({
-			"\ 'source': s:list_buffers(),
-			"\ 'sink*': { lines -> s:delete_buffers(lines) },
-			"\ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-			"\ }))
-
-"noremap <c-d> :BD<CR>
-
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+"" ===
+"" === TODOLIST todo-comments.nvim
+"" ===
+nmap <leader>ft :FzfPreviewTodoComments<CR>
+lua << EOF
+  require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+" TODO this is a todo
+" HACK r
+" FIX rsat
 
 
 
@@ -1013,7 +1006,7 @@ let g:formatters_cpp = ['aih']
 let g:formatters_java = ['aih']
 let g:formatters_sh=['aih_shell']
 nnoremap \f :Autoformat<CR>
-nnoremap <LEADER>f :Autoformat<CR>
+nnoremap <c-f> :Autoformat<CR>
 autocmd FileType vim let b:autoformat_autoindent = 0
 let g:formatdef_aih_js = '"js-beautify "'
 let g:formatters_js = ['aih_js']
@@ -1112,21 +1105,21 @@ let g:formatters_ejs = ['aih_js']
 "" === fastfold
 "" ===
 "nmap zuz <Plug>(FastFoldUpdate)
-"let g:fastfold_savehook = 1
-"let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-"let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
-"let g:markdown_folding = 1
-"let g:tex_fold_enabled = 1
-"let g:vimsyn_folding = 'af'
-"let g:xml_syntax_folding = 1
-"let g:javaScript_fold = 1
-"let g:sh_fold_enabled= 7
-"let g:ruby_fold = 1
-"let g:perl_fold = 1
-"let g:perl_fold_blocks = 1
-"let g:r_syntax_folding = 1
-"let g:rust_fold = 1
-"let g:php_folding = 1
+let g:fastfold_savehook = 1
+	"let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+	"let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
+	"let g:markdown_folding = 1
+	"let g:tex_fold_enabled = 1
+	"let g:vimsyn_folding = 'af'
+	"let g:xml_syntax_folding = 1
+	"let g:javaScript_fold = 1
+	"let g:sh_fold_enabled= 7
+	"let g:ruby_fold = 1
+	"let g:perl_fold = 1
+	"let g:perl_fold_blocks = 1
+	"let g:r_syntax_folding = 1
+	"let g:rust_fold = 1
+	"let g:php_folding = 1
 
 
 "" ===
@@ -1283,7 +1276,6 @@ let g:Illuminate_delay = 750
 "let g:dart_format_on_save = 1
 "let g:dartfmt_options = " -l 100 --fix"
 
-
 "" ===================== End of Plugin Settings =====================
 
 
@@ -1298,32 +1290,13 @@ let g:Illuminate_delay = 750
 	"exec "e ~/.config/nvim/_machine_specific.vim"
 "endif
 
-""_____________________________________________________________Aihui______________
 
 ""=============aihui: skeleton from the past
 ""inoremap <c-i> <Esc>la ====== <TAB>
 "change my <ESC> inoremap
-inoremap jj <Esc>
-""=============
+inoremap jj <Esc>:w<CR>
 
-""_____________________________________________________________Plug_______________
-
-"" ===aih
-"" === IndentLine
-"" ===aih
-"let g:indentLine_setColors = 1
-"let g:indentLine_color_gui = '#000000'
-"let g:indentLine_fileType = ['c', 'cpp','java','py','txt']
-"let g:indentLine_bgcolor_gui = '#FF5F00'
-"let g:indentLine_char = '|'
-"let g:indentLine_char = '¦'
-"let g:indentLine_char =	'┆'
-"let g:indentLine_char =	   '│'
-"let g:indentLine_char =		  '⎸'
-"let g:indentLine_char =			 '▏'
-"let g:indentLine_color_term = 239
-
-"" ____________________________________________________________binds______________
+"" ===================== Binds =====================
 noremap ff $a;<Esc>
 noremap ,, $a,<Esc>
 "inoremap <leader>; <C-o>A;
@@ -1336,18 +1309,18 @@ noremap ,, $a,<Esc>
 ""copy all to system"
 "nnoremap ya ggvG$"+y
 
-" ____________________________________________________________SETting______________
+"" ===================== Settings =====================
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk
 " shift + 8 : search next this word
-"============
-"======================cpp c++
+"cpp c++
 nnoremap fa a<++><Esc>gg3jo
 set fileencodings=utf-8,ucs-born,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 
-"=======================eclim
+"eclim
 filetype plugin indent on
-" ____________________________________________________________source
+"" ===================== Source =====================
 source ~/.config/nvim/markdown-snippets.vim
+
